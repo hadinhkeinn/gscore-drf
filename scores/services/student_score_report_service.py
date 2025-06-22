@@ -161,7 +161,6 @@ class ScoreReportService:
             ]
         }
 
-        self.student_score_service = StudentScoreService()
 
         for field in SUBJECT_FIELDS:
             stats = self.student_score_service.score_level_counts(field)

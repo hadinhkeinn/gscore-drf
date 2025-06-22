@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
-from scores.services import TopStudentScoreService
+from scores.services.cached_top_student_service import CachedTopStudentScoreService
 
 
 class TopStudentsGroupAView(ViewSet):
@@ -12,7 +12,7 @@ class TopStudentsGroupAView(ViewSet):
 
     def __init__(self, **kwargs):
         super(TopStudentsGroupAView, self).__init__(**kwargs)
-        self.service = TopStudentScoreService()
+        self.service = CachedTopStudentScoreService()
 
     def get(self, request):
         """
