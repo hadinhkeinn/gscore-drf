@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from scores.views import StudentScoreViewSet, ScoreReportView, TopStudentsGroupAView
+from scores.views import StudentScoreViewSet, ScoreReportView, TopStudentsGroupAView, DashboardViewSet
 
 router = DefaultRouter()
 router.register(r"scores", StudentScoreViewSet, basename="studentscore")
@@ -14,6 +14,9 @@ urlpatterns = [
     path('score-report/chart-data/', ScoreReportView.as_view({'get': 'score_chart_data'}), name='chart_data'),
 
     path('top-students/group-a/', TopStudentsGroupAView.as_view({'get': 'get'}), name='top_students_group_a'),
+
+    # Dashboard summary endpoint
+    path('dashboard/summary/', DashboardViewSet.as_view({'get': 'summary'}), name='dashboard_summary'),
 
     path("", include(router.urls)),
 ]
